@@ -1,67 +1,91 @@
 // src/hooks/useResponsive.ts
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 
-interface ResponsiveInfo {
+// Tipos para breakpoints e orientação
+export type Breakpoint = 'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'xxl';
+export type Orientation = 'portrait' | 'landscape';
+
+// Definição de breakpoints (em pixels)
+const BREAKPOINTS: Record<Breakpoint, number> = {
+  xs: 0,      // Extra small devices (phones)
+  sm: 576,    // Small devices (phones landscape)
+  md: 768,    // Medium devices (tablets)
+  lg: 992,    // Large devices (desktops)
+  xl: 1200,   // Extra large devices
+  xxl: 1400   // Extra extra large
+};
+
+interface ResponsiveState {
+  breakpoint: Breakpoint;
+  orientation: Orientation;
   isMobile: boolean;
   isTablet: boolean;
   isDesktop: boolean;
-  isLargeDesktop: boolean;
-  screenWidth: number;
-  screenHeight: number;
-  breakpoint: 'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'xxl';
+  isPortrait: boolean;
+  isLandscape: boolean;
+  width: number;
+  height: number;
 }
 
-const useResponsive = (): ResponsiveInfo => {
-  const [responsiveInfo, setResponsiveInfo] = useState<ResponsiveInfo>({
+const useResponsive = () => {
+  const [state, setState] = useState<ResponsiveState>({
+    breakpoint: 'md',
+    orientation: 'portrait',
     isMobile: false,
     isTablet: false,
     isDesktop: false,
-    isLargeDesktop: false,
-    screenWidth: 0,
-    screenHeight: 0,
-    breakpoint: 'md'
+    isPortrait: true,
+    isLandscape: false,
+    width: 0,
+    height: 0
   });
 
-  useEffect(() => {
-    const updateResponsiveInfo = () => {
-      const width = window.innerWidth;
-      const height = window.innerHeight;
+  const calculateResponsiveState = useCallback(() => {
+    const width = window.innerWidth;
+    const height = window.innerHeight;
+    
+    // Determinar breakpoint
+    let breakpoint: Breakpoint = 'md';
+    if (width >= BREAKPOINTS.xxl) breakpoint = 'xxl';
+    else if (width >= BREAKPOINTS.xl) breakpoint = 'xl';
+    else if (width >= BREAKPOINTS.lg) breakpoint = 'lg';
+    else if (width >= BREAKPOINTS.md) breakpoint = 'md';
+    else if (width >= BREAKPOINTS.sm) breakpoint = 'sm';
+    else breakpoint = 'xs';
 
-      // Definições de breakpoint
-      const isMobile = width < 576;
-      const isTablet = width >= 576 && width < 992;
-      const isDesktop = width >= 992 && width < 1440;
-      const isLargeDesktop = width >= 1440;
+    // Determinar orientação
+    const orientation: Orientation = width > height ? 'landscape' : 'portrait';
 
-      // Determinar breakpoint atual
-      let breakpoint: ResponsiveInfo['breakpoint'] = 'md';
-      if (width < 576) breakpoint = 'xs';
-      else if (width < 768) breakpoint = 'sm';
-      else if (width < 992) breakpoint = 'md';
-      else if (width < 1200) breakpoint = 'lg';
-      else if (width < 1440) breakpoint = 'xl';
-      else breakpoint = 'xxl';
-
-      setResponsiveInfo({
-        isMobile,
-        isTablet,
-        isDesktop,
-        isLargeDesktop,
-        screenWidth: width,
-        screenHeight: height,
-        breakpoint
-      });
-    };
-
-    // Atualizar imediatamente e adicionar listener
-    updateResponsiveInfo();
-    window.addEventListener('resize', updateResponsiveInfo);
-
-    // Cleanup
-    return () => window.removeEventListener('resize', updateResponsiveInfo);
+    setState({
+      breakpoint,
+      orientation,
+      isMobile: width < BREAKPOINTS.md,
+      isTablet: width >= BREAKPOINTS.md && width < BREAKPOINTS.lg,
+      isDesktop: width >= BREAKPOINTS.lg,
+      isPortrait: orientation === 'portrait',
+      isLandscape: orientation === 'landscape',
+      width,
+      height
+    });
   }, []);
 
-  return responsiveInfo;
+  useEffect(() => {
+    // Calcular estado inicial
+    calculateResponsiveState();
+
+    // Adicionar listener de redimensionamento
+    window.addEventListener('resize', calculateResponsiveState);
+    
+    // Adicionar listener de mudança de orientação
+    window.addEventListener('orientationchange', calculateResponsiveState);
+
+    return () => {
+      window.removeEventListener('resize', calculateResponsiveState);
+      window.removeEventListener('orientationchange', calculateResponsiveState);
+    };
+  }, [calculateResponsiveState]);
+
+  return state;
 };
 
 export default useResponsive;

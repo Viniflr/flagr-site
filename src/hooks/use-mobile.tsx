@@ -1,19 +1,16 @@
-import * as React from "react"
+// src/hooks/use-mobile.tsx
+import useResponsive from './useResponsive';
 
-const MOBILE_BREAKPOINT = 768
+// Opção 1: Retorna apenas o valor booleano
+const useMobile = (): boolean => {
+  const { isMobile } = useResponsive();
+  return isMobile;
+};
 
-export function useIsMobile() {
-  const [isMobile, setIsMobile] = React.useState<boolean | undefined>(undefined)
+// Opção 2: Retorna o objeto completo (se necessário)
+const useMobileExtended = () => {
+  return useResponsive();
+};
 
-  React.useEffect(() => {
-    const mql = window.matchMedia(`(max-width: ${MOBILE_BREAKPOINT - 1}px)`)
-    const onChange = () => {
-      setIsMobile(window.innerWidth < MOBILE_BREAKPOINT)
-    }
-    mql.addEventListener("change", onChange)
-    setIsMobile(window.innerWidth < MOBILE_BREAKPOINT)
-    return () => mql.removeEventListener("change", onChange)
-  }, [])
-
-  return !!isMobile
-}
+export default useMobile;
+// export { useMobileExtended } se precisar;

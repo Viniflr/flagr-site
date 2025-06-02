@@ -7,6 +7,8 @@ interface PricingCardProps {
   features: string[];
   bgImage?: string;
   bgColor?: string;
+  isHighlighted?: boolean;
+  onGetPlan?: () => void;
 }
 
 const PricingCard: React.FC<PricingCardProps> = ({
@@ -16,6 +18,8 @@ const PricingCard: React.FC<PricingCardProps> = ({
   features,
   bgImage,
   bgColor = 'rgba(39,124,48,1)',
+  isHighlighted = false,
+  onGetPlan,
 }) => {
   const renderFeatures = () =>
     features.map((feature, index) => (
