@@ -1,73 +1,88 @@
-# Welcome to your Lovable project
+# 📬 Landing Page — Flagr
 
-## Project info
+Uma landing page de contato responsiva para a empresa **Flagr**, construída com React, TypeScript e Tailwind CSS. Inclui informações de contato, formulário validado com [React Hook Form](https://react-hook-form.com/) e [Zod](https://zod.dev/), envio automático de e-mail via [EmailJS](https://www.emailjs.com/) e feedback ao usuário.
 
-**URL**: https://lovable.dev/projects/948540e4-91c9-420a-b968-29565b89a889
+---
 
-## How can I edit this code?
+## 📦 Tecnologias Utilizadas
 
-There are several ways of editing your application.
+- **React**
+- **TypeScript**
+- **Tailwind CSS**
+- **React Hook Form**
+- **Zod**
+- **EmailJS** (envio de e-mail sem backend)
 
-**Use Lovable**
+---
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/948540e4-91c9-420a-b968-29565b89a889) and start prompting.
+## 🚀 Como rodar o projeto localmente
 
-Changes made via Lovable will be committed automatically to this repo.
+1. **Clone o repositório:**
+   ```sh
+   git clone https://github.com/seu-usuario/seu-repositorio.git
+   cd seu-repositorio
+   ```
 
-**Use your preferred IDE**
+2. **Instale as dependências:**
+   ```sh
+   npm install
+   # ou
+   yarn
+   ```
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+3. **Configure o EmailJS**  
+   Para que o envio de emails funcione, siga os passos abaixo:
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+   a. Crie uma conta em EmailJS  
+   b. Crie um serviço de email e um template:  
+   Vá até “Email Services” e conecte seu email (ex: Gmail).
 
-Follow these steps:
+   Em “Email Templates”, crie um novo template com os campos: name, email, phone, message.
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+   c. Copie os dados:
+   Service ID
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+   Template ID
 
-# Step 3: Install the necessary dependencies.
-npm i
+   Public Key
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
-```
+   d. Crie um arquivo .env na raiz do projeto com as variáveis:
+   ```env
+   VITE_EMAILJS_SERVICE_ID=seu_service_id
+   VITE_EMAILJS_TEMPLATE_ID=seu_template_id
+   VITE_EMAILJS_PUBLIC_KEY=sua_public_key
+   ```
 
-**Edit a file directly in GitHub**
+   ⚠️ Certifique-se de reiniciar o servidor após criar ou alterar o .env.
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+4. **Inicie o servidor de desenvolvimento:**
+   ```sh
+   npm run dev
+   # ou
+   yarn dev
+   ```
 
-**Use GitHub Codespaces**
+---
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+## ✨ Funcionalidades
 
-## What technologies are used for this project?
+- Exibição de contatos com ícones
+- Formulário com validação de dados
+- Envio automático de email com as informações preenchidas
+- Mensagem de sucesso com orientação após envio
+- Scroll suave entre seções
 
-This project is built with:
+---
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+## 🧪 Teste de envio de mensagem
 
-## How can I deploy this project?
+1. Preencha o formulário com seus dados reais ou de teste.
+2. Clique em "Enviar".
+3. Você verá um pop-up confirmando que a mensagem foi enviada com sucesso.
+4. A mensagem será enviada para o email renata@flagrdd.com.br.
 
-Simply open [Lovable](https://lovable.dev/projects/948540e4-91c9-420a-b968-29565b89a889) and click on Share -> Publish.
+---
 
-## Can I connect a custom domain to my Lovable project?
+## 📄 Licença
 
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+Este projeto está licenciado sob a MIT License.

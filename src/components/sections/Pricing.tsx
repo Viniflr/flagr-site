@@ -37,7 +37,7 @@ const Pricing: React.FC = () => {
   return (
     <section
       id="pricing"
-      className="bg-white z-10 flex w-full flex-col items-center mt-[264px] pb-[54px] max-md:mt-10"
+      className="bg-white z-10 flex w-full flex-col justify-center items-center mt-[264px] pb-[54px] max-md:mt-10"
     >
       <div className="w-full max-w-[1535px] flex flex-col items-center text-center px-20 max-md:px-5">
         <h2 className="text-[70px] font-semibold text-[rgba(0,63,13,1)] max-md:text-[40px]">
@@ -87,23 +87,6 @@ const Pricing: React.FC = () => {
           >
             Ver Mais
           </button>
-        </div>
-      </div>
-
-      {/* Seção final - Barra verde grudada nas bordas */}
-      <div className="bg-[rgba(39,124,48,1)] w-full mt-[148px] py-[47px] text-white flex flex-col items-center">
-        <div className="max-w-[1535px] w-full px-20 max-md:px-5">
-          <h3 className="text-5xl font-black max-md:text-[40px] text-center">Somos para você!</h3>
-          <div className="flex justify-center">
-            <img
-              src="https://cdn.builder.io/api/v1/image/assets/294290e65fab44dbb4b934ad88d9fa28/1422864c811b5853b5a2989ceaedf367453cf09c?placeholderIfAbsent=true"
-              className="aspect-[200] w-[211px] object-contain mt-[18px]"
-              alt="Divider"
-            />
-          </div>
-          <p className="text-[32px] font-normal tracking-[3.2px] mt-[49px] max-md:text-xl max-md:mt-10 text-center">
-            Se você é uma startup em fase de desenvolvimento e expansão, que busca estruturar sua base jurídica com segurança e eficiência ou empreendedor que desejam evitar riscos legais desde os primeiros passos, somos a plataforma certa para você!
-          </p>
         </div>
       </div>
     </section>

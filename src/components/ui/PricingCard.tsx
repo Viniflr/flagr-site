@@ -61,8 +61,6 @@ const PricingCard: React.FC<PricingCardProps> = ({
           alt="Divider"
           className={`w-full ${dividerImg}`}
         />
-
-        <button className={buttonStyle}>Obter</button>
       </div>
     );
   }
@@ -90,8 +88,6 @@ const PricingCard: React.FC<PricingCardProps> = ({
         alt="Divider"
         className="w-[200px] md:w-[301px] object-contain mt-6"
       />
-
-      <button className={buttonStyle}>Obter</button>
     </div>
   );
 };

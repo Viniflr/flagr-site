@@ -15,12 +15,14 @@ const Hero: React.FC = () => {
           </p>
 
           <div className="mt-8 md:mt-10 lg:mt-12">
-            <button
+            <a href="#contact">
+              <button
               className="bg-[rgba(39,124,48,1)] text-white text-lg md:text-xl font-medium px-8 py-3 md:px-10 md:py-4 rounded-lg hover:bg-[rgba(39,124,48,0.9)] transition-colors duration-300 w-full sm:w-auto text-center"
               type="button"
             >
               Agende uma demonstração gratuita!
             </button>
+            </a>
           </div>
         </div>
 

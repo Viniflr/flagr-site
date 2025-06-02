@@ -1,31 +1,26 @@
 import React from 'react';
 
 interface BenefitCardProps {
-  icon: string;
-  title: string;
-  description: string;
+    icon: string;
+    title: string;
+    description: string;
+    smallText?: boolean;
 }
 
-const BenefitCard: React.FC<BenefitCardProps> = ({ icon, title, description }) => {
-  return (
-    <div className="flex flex-col items-stretch">
-      <div className="flex items-center justify-center w-[221px] aspect-square px-11 max-md:px-5 rounded-full border-2 border-[rgba(39,124,48,1)] bg-white self-center">
-        <img
-          src={icon}
-          alt={title}
-          className="w-[89px] aspect-[1.09] object-contain"
-        />
-      </div>
-
-      <h3 className="mt-[27px] text-center text-[32px] font-black text-[rgba(39,124,48,1)]">
-        {title}
-      </h3>
-
-      <p className="mt-8 text-center text-3xl font-normal tracking-[3px] text-[rgba(48,158,79,1)] max-md:max-w-full">
-        {description}
-      </p>
-    </div>
-  );
+const BenefitCard: React.FC<BenefitCardProps> = ({ icon, title, description, smallText = false }) => {
+    return (
+        <div className="bg-white border border-[#277C30] rounded-2xl shadow-lg p-6 flex flex-col items-center text-center h-full">
+            <img
+                src={icon}
+                alt={title}
+                className="w-20 h-20 object-contain mb-6"
+            />
+            <h3 className="text-2xl font-bold text-[#277C30] mb-4">{title}</h3>
+            <p className={`${smallText ? 'text-sm md:text-base' : 'text-base md:text-lg'} text-[#309E4F]`}>
+                {description}
+            </p>
+        </div>
+    );
 };
 
 export default BenefitCard;

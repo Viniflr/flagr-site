@@ -17,8 +17,8 @@ export const PricingCard: React.FC<PricingCardProps> = ({
   isHighlighted = false,
   onGetPlan
 }) => {
-  const shadowClass = isHighlighted 
-    ? "shadow-[7px_7px_7px_0px_rgba(0,0,0,0.25)]" 
+  const shadowClass = isHighlighted
+    ? "shadow-[7px_7px_7px_0px_rgba(0,0,0,0.25)]"
     : "shadow-[0px_4px_4px_0px_rgba(0,0,0,0.25)]";
 
   const handleGetPlan = () => {
@@ -35,36 +35,26 @@ export const PricingCard: React.FC<PricingCardProps> = ({
         <header className="text-white text-center text-[32px] font-semibold mb-4 max-md:text-[28px] max-sm:text-[24px]">
           {planName}
         </header>
-        
+
         <div className="text-white text-center text-4xl font-semibold mb-2 max-md:text-[32px] max-sm:text-[28px]">
           {price}
         </div>
-        
+
         <div className="text-white text-center text-lg font-semibold mb-4 max-md:text-base max-sm:text-sm">
           {period}
         </div>
-        
+
         <hr className="w-full h-px bg-white mb-4 border-0" />
-        
+
         {/* === Ajuste para expandir verticalmente e melhorar o espaçamento das features === */}
         <div className="text-white text-center text-xs font-bold leading-[18px] mb-4 
                       flex-1 flex flex-wrap justify-center items-center gap-x-2 gap-y-1 max-md:text-[11px] 
                       max-md:leading-[16px] max-sm:text-[10px] max-sm:leading-[15px]">
           {features.map((feature, index) => (
             // Adicionado 'py-0.5' para um pequeno padding vertical em cada feature, melhorando a legibilidade ao quebrar a linha.
-            <span key={index} className="py-0.5">{feature}</span> 
+            <span key={index} className="py-0.5">{feature}</span>
           ))}
         </div>
-        
-        <hr className="w-full h-px bg-white mb-4 border-0" />
-        
-        <button 
-          onClick={handleGetPlan}
-          className="text-[#277C30] text-center text-xl font-semibold w-full h-[45px] bg-white mx-auto max-md:text-lg max-sm:text-base max-sm:h-[40px] hover:bg-gray-100 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-white focus:ring-opacity-50"
-          aria-label={`Obter plano ${planName}`}
-        >
-          Obter
-        </button>
       </div>
     </article>
   );

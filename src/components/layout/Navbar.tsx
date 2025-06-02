@@ -18,7 +18,6 @@ const Navbar: React.FC = () => {
               {/* Navegação */}
               <nav className="flex flex-wrap justify-center md:justify-start gap-4 md:gap-10 text-lg md:text-xl text-[rgba(0,63,13,1)] font-normal py-3 md:py-0">
                 <a href="#home" className="hover:text-[rgba(39,124,48,1)] transition-colors duration-200">Início</a>
-                <a href="#about" className="hover:text-[rgba(39,124,48,1)] transition-colors duration-200">Sobre Nós</a>
                 <a href="#benefits" className="hover:text-[rgba(39,124,48,1)] transition-colors duration-200">Benefícios</a>
                 <a href="#how-it-works" className="hover:text-[rgba(39,124,48,1)] transition-colors duration-200">Como Funciona</a>
                 <a href="#pricing" className="hover:text-[rgba(39,124,48,1)] transition-colors duration-200">Planos</a>
@@ -27,12 +26,16 @@ const Navbar: React.FC = () => {
 
               {/* Botões */}
               <div className="flex flex-wrap justify-center md:justify-end items-center gap-3 text-sm md:text-base font-semibold my-2 md:my-0">
-                <button className="px-4 py-1.5 md:px-14 md:py-2 border border-[rgba(39,124,48,1)] rounded text-[rgba(0,63,13,1)] hover:bg-[rgba(39,124,48,0.05)] transition-colors duration-200">
-                  Entrar
-                </button>
-                <button className="px-4 py-1.5 md:px-10 md:py-2 bg-[rgba(39,124,48,1)] rounded text-white hover:bg-[rgba(39,124,48,0.8)] transition-colors duration-200">
+                <a href="http://54.159.135.147:8080">
+                  <button className="px-4 py-1.5 md:px-14 md:py-2 border border-[rgba(39,124,48,1)] rounded text-[rgba(0,63,13,1)] hover:bg-[rgba(39,124,48,0.05)] transition-colors duration-200">
+                    Entrar
+                  </button>
+                </a>
+                <a href="#contact">
+                  <button className="px-4 py-1.5 md:px-10 md:py-2 bg-[rgba(39,124,48,1)] rounded text-white hover:bg-[rgba(39,124,48,0.8)] transition-colors duration-200">
                   Comece agora
                 </button>
+                </a>
               </div>
             </div>
           </div>
