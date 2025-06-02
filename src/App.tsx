@@ -7,6 +7,7 @@ import ScrollToTop from "./components/layout/ScrollToTop";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import Plano from "./pages/planos";
+import { ResponsiveProvider } from './context/ResponsiveContext'; // Importe o ResponsiveProvider
 
 const queryClient = new QueryClient();
 
@@ -17,11 +18,14 @@ const App = () => (
       <Sonner />
       <BrowserRouter>
         <ScrollToTop />
-        <Routes>
-          <Route path="/" element={<Index />} />
-          <Route path="/second" element={<Plano />} />
-          <Route path="*" element={<NotFound />} />
-        </Routes>
+        {/* Adicione o ResponsiveProvider aqui */}
+        <ResponsiveProvider>
+          <Routes>
+            <Route path="/" element={<Index />} />
+            <Route path="/second" element={<Plano />} />
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </ResponsiveProvider>
       </BrowserRouter>
     </TooltipProvider>
   </QueryClientProvider>

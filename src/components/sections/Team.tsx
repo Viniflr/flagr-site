@@ -2,24 +2,22 @@ import React from 'react';
 
 const Team: React.FC = () => {
   return (
-    <section className="relative bg-white flex flex-col items-center w-full py-[108px] max-md:py-[100px] px-5">
-      {/* Linha Verde Escura */}
-      {/* 'top' ajustado para abaixar a linha. */}
+    <section className="relative bg-white flex flex-col items-center w-full py-[108px] max-md:py-[100px] overflow-hidden">
+      {/* Linha Verde Escura - agora estendida até as bordas */}
       <div 
-        className="absolute bg-[#277C30] z-0" 
-        style={{ width: '1920px', height: '247px', top: '270px', left: '50%', transform: 'translateX(-50%)' }}
+        className="absolute bg-[#277C30] z-0 w-screen left-1/2 transform -translate-x-1/2" 
+        style={{ height: '247px', top: '270px' }}
       ></div>
 
       {/* Conteúdo da Seção */}
-      <div className="relative z-10 flex flex-col items-center w-full">
+      <div className="relative z-10 flex flex-col items-center w-full max-w-[1114px] px-5">
         {/* Título */}
         <h2 className="text-[rgba(39,124,48,1)] text-[70px] font-semibold text-center max-md:text-[40px] mb-16">
           <span style={{ color: 'rgba(39,124,48,1)' }}>Conheça Nosso</span> Time!
         </h2>
 
         {/* Container das fotos + informações */}
-        {/* 'gap-10' alterado para 'gap-20' para aumentar o espaçamento. Você pode usar um valor maior ou menor conforme desejar. */}
-        <div className="flex flex-wrap justify-center gap-20 max-w-[1114px] w-full">
+        <div className="flex flex-wrap justify-center gap-20 w-full">
           {/* Membro 1 */}
           <div className="flex flex-col items-center w-[225px] max-w-full">
             <img
