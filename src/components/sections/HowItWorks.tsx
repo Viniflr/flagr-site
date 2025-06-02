@@ -22,7 +22,7 @@ const ProcessStep: React.FC<ProcessStepProps> = ({ icon, title, description }) =
 
 const HowItWorks: React.FC = () => {
   return (
-    <section id="how-it-works" className="bg-white flex w-full flex-col justify-center items-center py-20 h-screen">
+    <section id="how-it-works" className="bg-white flex w-full flex-col justify-center items-center py-20">
       <h2 className="text-[70px] font-semibold text-center text-[#003F0D] max-md:text-[40px]">
         <span className="text-[#003F0D]">Como</span> <span className="text-[#277C30]">Funciona?</span>
       </h2>

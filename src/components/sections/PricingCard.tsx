@@ -1,61 +1,67 @@
-import React from 'react';
+import React from "react";
 
 interface PricingCardProps {
-  planName: string;
+  title: string;
   price: string;
-  period: string;
   features: string[];
+  bgColor?: string;
+  bgImage?: string;
   isHighlighted?: boolean;
   onGetPlan?: () => void;
 }
 
-export const PricingCard: React.FC<PricingCardProps> = ({
-  planName,
+const PricingCard: React.FC<PricingCardProps> = ({
+  title,
   price,
-  period,
   features,
+  bgColor = "rgba(39,124,48,1)",
+  bgImage,
   isHighlighted = false,
-  onGetPlan
+  onGetPlan,
 }) => {
-  const shadowClass = isHighlighted
-    ? "shadow-[7px_7px_7px_0px_rgba(0,0,0,0.25)]"
-    : "shadow-[0px_4px_4px_0px_rgba(0,0,0,0.25)]";
-
-  const handleGetPlan = () => {
-    if (onGetPlan) {
-      onGetPlan();
-    } else {
-      alert(`Selecionado plano: ${planName}`);
-    }
-  };
+  const shadowClass = isHighlighted ? "shadow-lg" : "shadow-md";
 
   return (
-    <article className={`w-[320px] bg-[linear-gradient(0deg,#277C30_0%,#277C30_100%)] ${shadowClass} flex flex-col flex-shrink-0 max-md:w-[280px] max-sm:w-[250px]`}>
-      <div className="flex flex-col h-full p-[25px] max-md:p-[20px] max-sm:p-4">
-        <header className="text-white text-center text-[32px] font-semibold mb-4 max-md:text-[28px] max-sm:text-[24px]">
-          {planName}
-        </header>
+    <article
+      className={`
+        w-full max-w-[320px]
+        rounded-md
+        flex flex-col
+        min-h-[460px]
+        text-white
+        p-5
+        ${shadowClass}
+        bg-green-800
+        ${bgImage ? "bg-cover bg-center" : ""}
+      `}
+      style={{
+        backgroundColor: bgColor,
+        backgroundImage: bgImage ? `url(${bgImage})` : undefined,
+      }}
+    >
+      <header className="text-center text-2xl font-bold mb-3">{title}</header>
 
-        <div className="text-white text-center text-4xl font-semibold mb-2 max-md:text-[32px] max-sm:text-[28px]">
-          {price}
-        </div>
+      <div className="text-center text-3xl font-extrabold mb-4">{price}</div>
 
-        <div className="text-white text-center text-lg font-semibold mb-4 max-md:text-base max-sm:text-sm">
-          {period}
-        </div>
+      <hr className="border-white mb-4" />
 
-        <hr className="w-full h-px bg-white mb-4 border-0" />
+      <ul className="flex-grow list-disc list-inside space-y-1 text-sm">
+        {features.map((feature, idx) => (
+          <li key={idx}>{feature}</li>
+        ))}
+      </ul>
 
-        {/* === Ajuste para expandir verticalmente e melhorar o espaçamento das features === */}
-        <div className="text-white text-center text-xs font-bold leading-[18px] mb-4 
-                      flex-1 flex flex-wrap justify-center items-center gap-x-2 gap-y-1 max-md:text-[11px] 
-                      max-md:leading-[16px] max-sm:text-[10px] max-sm:leading-[15px]">
-          {features.map((feature, index) => (
-            // Adicionado 'py-0.5' para um pequeno padding vertical em cada feature, melhorando a legibilidade ao quebrar a linha.
-            <span key={index} className="py-0.5">{feature}</span>
-          ))}
-        </div>
-      </div>
+      {/* Botão opcional para "Get Plan" */}
+      {onGetPlan && (
+        <button
+          onClick={onGetPlan}
+          className="mt-6 bg-white text-green-800 font-semibold rounded px-4 py-2 hover:bg-gray-100 transition"
+        >
+          Escolher Plano
+        </button>
+      )}
     </article>
   );
 };
+
+export default PricingCard;
