@@ -8,6 +8,8 @@ interface PricingPlan {
   period: string;
   features: string[];
   isHighlighted?: boolean;
+  bgColor?: string; // Novo campo opcional
+  bgImage?: string; // Novo campo opcional
 }
 
 interface PricingSectionProps {
@@ -47,7 +49,7 @@ export const PricingSection: React.FC<PricingSectionProps> = ({
             e não quebrem (ativando o scroll do pai se necessário).
             O padding horizontal (px-5) foi movido para o container mais externo para evitar problemas com o overflow-x-auto.
           */}
-          <div className="flex gap-[30px] min-w-max max-md:gap-5 max-sm:gap-[15px]">
+          <div className="flex flex-wrap justify-center gap-[30px] max-md:gap-5 max-sm:gap-[15px]">
             {plans.map((plan, index) => (
               <PricingCard
                 key={index}
@@ -57,6 +59,8 @@ export const PricingSection: React.FC<PricingSectionProps> = ({
                 isHighlighted={plan.isHighlighted}
                 onGetPlan={() => handlePlanSelect(plan.planName)}
                 type={index === 0 ? "start" : index === plans.length - 1 ? "master" : "essential"}
+                bgColor={plan.bgColor} // Passe bgColor se existir
+                bgImage={plan.bgImage} // Passe bgImage se existir
               />
             ))}
           </div>

@@ -1,5 +1,5 @@
 import React from "react";
-import PricingCard from "../ui/PricingCard";
+import PricingCard from "../sections/PricingCard";
 import { useNavigate } from "react-router-dom";
 
 const Pricing: React.FC = () => {
@@ -52,6 +52,7 @@ const Pricing: React.FC = () => {
             price="R$ 250"
             features={startFeatures}
             bgImage="https://cdn.builder.io/api/v1/image/assets/294290e65fab44dbb4b934ad88d9fa28/86802ed29fbc546766da943a32d53fd5c13e9293?placeholderIfAbsent=true"
+            bgColor="rgba(70,183,102,1)" // mesma cor do Essential
             type="start"
           />
 

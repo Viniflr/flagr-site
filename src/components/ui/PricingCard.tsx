@@ -40,7 +40,10 @@ const PricingCard: React.FC<PricingCardProps> = ({
 
   if (type === 'start') {
     return (
-      <div className={`relative ${baseCard} text-white font-semibold text-center p-5 md:p-10 bg-cover bg-center overflow-hidden`}>
+      <div
+        className={`relative ${baseCard} text-white font-semibold text-center p-5 md:p-10 bg-cover bg-center overflow-hidden`}
+        style={{ backgroundColor: bgColor }}
+      >
         {bgImage && (
           <img
             src={bgImage}

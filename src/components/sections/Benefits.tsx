@@ -4,9 +4,9 @@ import BenefitCard from '../ui/BenefitCard';
 const Benefits: React.FC = () => {
   return (
     <section
-    id="benefits"
-    className="bg-white w-full flex flex-col justify-center items-center py-16 md:py-24 px-6 md:px-12"
->
+      id="benefits"
+      className="bg-white w-full flex flex-col justify-center items-center min-h-screen py-16 md:py-24 px-6 md:px-12"
+    >
       {/* Title Section */}
       <div className="w-full max-w-6xl text-center mb-16 md:mb-28">
         <h2 className="text-4xl md:text-6xl font-bold">

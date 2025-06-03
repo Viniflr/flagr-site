@@ -1,66 +1,101 @@
-import React from "react";
+import React from 'react';
 
 interface PricingCardProps {
+  type: 'start' | 'essential' | 'master';
   title: string;
   price: string;
   features: string[];
-  bgColor?: string;
   bgImage?: string;
+  bgColor?: string;
   isHighlighted?: boolean;
   onGetPlan?: () => void;
 }
 
 const PricingCard: React.FC<PricingCardProps> = ({
+  type,
   title,
   price,
   features,
-  bgColor = "rgba(39,124,48,1)",
   bgImage,
+  bgColor = 'rgba(39,124,48,1)',
   isHighlighted = false,
   onGetPlan,
 }) => {
-  const shadowClass = isHighlighted ? "shadow-lg" : "shadow-md";
+  const renderFeatures = () =>
+    features.map((feature, index) => (
+      <React.Fragment key={index}>
+        {feature}
+        <br />
+        <br />
+      </React.Fragment>
+    ));
 
+  // Estilos reutilizáveis
+  const baseCard = 'flex flex-col w-full max-w-[400px] mx-auto shadow-md rounded-lg min-h-[700px]';
+  const titleText = 'text-2xl md:text-3xl';
+  const priceText = 'text-4xl md:text-5xl';
+  const dividerImg = 'object-contain mt-6';
+  const featuresText = 'text-base font-bold mt-6';
+  const buttonStyle = 'mt-auto px-6 py-2 text-lg text-[rgba(39,124,48,1)] bg-white hover:bg-gray-100 transition-colors rounded-full mx-auto';
+
+  if (type === 'start') {
+    return (
+      <div
+        className={`relative ${baseCard} text-white font-semibold text-center p-5 md:p-10 bg-cover bg-center overflow-hidden`}
+        style={{ backgroundColor: bgColor }}
+      >
+        {bgImage && (
+          <img
+            src={bgImage}
+            alt="Background"
+            className="absolute inset-0 w-full h-full object-cover -z-10"
+          />
+        )}
+
+        <h3 className={titleText}>{title}</h3>
+        <p className={`${priceText} mt-6`}>{price}</p>
+
+        <img
+          src="https://cdn.builder.io/api/v1/image/assets/294290e65fab44dbb4b934ad88d9fa28/5fb36f385de9e4e12cdb2c71f45dbf7dc74c9342?placeholderIfAbsent=true"
+          alt="Divider"
+          className={`w-full ${dividerImg}`}
+        />
+
+        <div className={featuresText}>{renderFeatures()}</div>
+
+        <img
+          src="https://cdn.builder.io/api/v1/image/assets/294290e65fab44dbb4b934ad88d9fa28/5fb36f385de9e4e12cdb2c71f45dbf7dc74c9342?placeholderIfAbsent=true"
+          alt="Divider"
+          className={`w-full ${dividerImg}`}
+        />
+      </div>
+    );
+  }
+
+  // para 'essential' e 'master'
   return (
-    <article
-      className={`
-        w-full max-w-[320px]
-        rounded-md
-        flex flex-col
-        min-h-[460px]
-        text-white
-        p-5
-        ${shadowClass}
-        bg-green-800
-        ${bgImage ? "bg-cover bg-center" : ""}
-      `}
-      style={{
-        backgroundColor: bgColor,
-        backgroundImage: bgImage ? `url(${bgImage})` : undefined,
-      }}
+    <div
+      className={`${baseCard} items-center text-white font-semibold text-center p-5 md:p-10`}
+      style={{ backgroundColor: bgColor }}
     >
-      <header className="text-center text-2xl font-bold mb-3">{title}</header>
+      <h3 className={titleText}>{title}</h3>
+      <p className={`${priceText} mt-4`}>{price}</p>
+      <p className="text-base md:text-xl">por mês</p>
 
-      <div className="text-center text-3xl font-extrabold mb-4">{price}</div>
+      <img
+        src="https://cdn.builder.io/api/v1/image/assets/294290e65fab44dbb4b934ad88d9fa28/48802326c50d2c5984fe81bb27b0dceafa1e5482?placeholderIfAbsent=true"
+        alt="Divider"
+        className="w-[200px] md:w-[301px] object-contain mt-4"
+      />
 
-      <hr className="border-white mb-4" />
+      <div className="text-base font-bold mt-4">{renderFeatures()}</div>
 
-      <ul className="flex-grow list-disc list-inside space-y-1 text-sm">
-        {features.map((feature, idx) => (
-          <li key={idx}>{feature}</li>
-        ))}
-      </ul>
-
-      {/* Botão opcional para "Get Plan" */}
-      {onGetPlan && (
-        <button
-          onClick={onGetPlan}
-          className="mt-6 bg-white text-green-800 font-semibold rounded px-4 py-2 hover:bg-gray-100 transition"
-        >
-          Escolher Plano
-        </button>
-      )}
-    </article>
+      <img
+        src="https://cdn.builder.io/api/v1/image/assets/294290e65fab44dbb4b934ad88d9fa28/5fb36f385de9e4e12cdb2c71f45dbf7dc74c9342?placeholderIfAbsent=true"
+        alt="Divider"
+        className="w-[200px] md:w-[301px] object-contain mt-6"
+      />
+    </div>
   );
 };
 

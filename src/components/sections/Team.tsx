@@ -24,7 +24,7 @@ const TeamMember: React.FC<TeamMemberProps> = ({ name, role, image, bio }) => (
 
 const Team: React.FC = () => {
   return (
-    <section className="relative bg-white w-full py-16 flex justify-center items-center">
+    <section className="relative bg-white w-full min-h-screen py-16 flex justify-center items-center">
 
       {/* Conteúdo */}
       <div className="relative z-10 max-w-[1114px] w-full mx-auto px-5">
@@ -35,7 +35,7 @@ const Team: React.FC = () => {
         </h2>
 
         {/* Membros */}
-        <div className="flex justify-center gap-20 flex-wrap">
+        <div className="flex justify-center items-center gap-20 flex-wrap">
           <TeamMember
             name="Renata Oliveira"
             role="CEO"
