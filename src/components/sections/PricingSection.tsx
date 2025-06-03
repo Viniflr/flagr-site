@@ -1,6 +1,6 @@
 import React from 'react';
 import { PricingHeader } from './PricingHeader';
-import { PricingCard } from './PricingCard';
+import PricingCard from '../ui/PricingCard';
 
 interface PricingPlan {
   planName: string;
@@ -51,12 +51,12 @@ export const PricingSection: React.FC<PricingSectionProps> = ({
             {plans.map((plan, index) => (
               <PricingCard
                 key={index}
-                planName={plan.planName}
+                title={plan.planName}
                 price={plan.price}
-                period={plan.period}
                 features={plan.features}
                 isHighlighted={plan.isHighlighted}
                 onGetPlan={() => handlePlanSelect(plan.planName)}
+                type={index === 0 ? "start" : index === plans.length - 1 ? "master" : "essential"}
               />
             ))}
           </div>
