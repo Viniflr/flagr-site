@@ -81,7 +81,8 @@ Uma landing page de contato responsiva para a empresa **Flagr**, construída com
 O Dataroom utilizado pela Flagr é baseado no Nextcloud e está disponível em um repositório próprio.
 Para rodar o Dataroom localmente ou em produção, utilize o repositório abaixo:
 
-- https://github.com/Viniflr/flagr-dataroom.git
+- https://github.com/Viniflr/flagr-dataroom.git 
+
 Siga as instruções do README desse repositório para subir o Nextcloud via Docker.
 
 Importante:
